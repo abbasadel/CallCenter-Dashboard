@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en-us" ng-app="myApp" ng-controller="MainController">
+    <head>
+        <meta charset="utf-8">
+        <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+        <title> Customer GIS </title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Use the correct meta names below for your web application
+           Ref: http://davidbcalhoun.com/2010/viewport-metatag
+
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">-->
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <!-- Basic Styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+
+        <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.css">
+
+        <!-- SmartAdmin RTL Support is under construction
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.css"> -->
+
+
+        <link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css">
+
+        <!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/demo.css">
+
+        <!-- FAVICONS -->
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+        <!-- GOOGLE FONT -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+    </head>
+    <body class="smart-style-2">
+        <!-- possible classes: minified, fixed-ribbon, fixed-header, fixed-width-->
+
+        <!-- HEADER -->
+        <header id="header">
+            <div id="logo-group">
+
+                <!-- PLACE YOUR LOGO HERE -->
+                <span id="logo"> <img src="img/customer-logo.png" alt="Customer GIS"> Customer GIS</span>
+                <!-- END LOGO PLACEHOLDER -->
+
+                <!-- Note: The activity badge color changes when clicked and resets the number to 0
+                Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+                <span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+
+                <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+                <div class="ajax-dropdown">
+
+                    <!-- the ID links are fetched via AJAX to the ajax container "ajax-notifications" -->
+                    <div class="btn-group btn-group-justified" data-toggle="buttons">
+                        <label class="btn btn-default">
+                            <input type="radio" name="activity" id="ajax/notify/mail.html">
+                            Msgs (14) </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="activity" id="ajax/notify/notifications.html">
+                            notify (3) </label>
+                        <label class="btn btn-default">
+                            <input type="radio" name="activity" id="ajax/notify/tasks.html">
+                            Tasks (4) </label>
+                    </div>
+
+                    <!-- notification content -->
+                    <div class="ajax-notifications custom-scroll">
+
+                        <div class="alert alert-transparent">
+                            <h4>Click a button to show messages here</h4>
+                            This blank page message helps protect your privacy, or you can show the first message here automatically.
+                        </div>
+
+                        <i class="fa fa-lock fa-4x fa-border"></i>
+
+                    </div>
+                    <!-- end notification content -->
+
+                    <!-- footer: refresh area -->
+                    <span> Last updated on: 12/12/2013 9:43AM
+                        <button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
+                            <i class="fa fa-refresh"></i>
+                        </button> </span>
+                    <!-- end footer -->
+
+                </div>
+                <!-- END AJAX-DROPDOWN -->
+            </div>
+
+
+            <!-- pulled right: nav area -->
+            <div class="pull-right">
+
+                <!-- collapse menu button -->
+                <div id="hide-menu" class="btn-header pull-right">
+                    <span> <a href="javascript:void(0);" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+                </div>
+                <!-- end collapse menu -->
+
+                <!-- logout button -->
+                <div id="logout" class="btn-header transparent pull-right">
+                    <span> <a href="/logout" title="Sign Out" ><i class="fa fa-sign-out"></i></a> </span>
+                </div>
+                <!-- end logout button -->
+
+                <!-- search mobile button (this is hidden till mobile view port) -->
+                <div id="search-mobile" class="btn-header transparent pull-right">
+                    <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+                </div>
+
+            </div>
+            <!-- end search mobile button -->
+
+            <!-- input: search field -->
+            <form action="#search.html" class="header-search pull-right">
+                <input type="text" placeholder="Find agent or group" id="search-fld">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+                <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+            </form>
+            <!-- end input: search field -->
+
+
+            <div class="btn-header transparent  pull-right">
+                <ul id="sparks" class="">
+                    <li class="sparks-info">
+                        <h5>Actions <span class="txt-color-white">{{totalActions}}</span></h5>
+                        <div class="sparkline txt-color-white hidden-mobile hidden-md hidden-sm">
+                            1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- Issue #7 // Moaaz Taha on 24-05-2014 -->
+            <!--<div -->
+        </header>
+            <!-- End of Issue #7 -->
+            <!-- end pulled right: nav area -->
+
+
+        <!-- END HEADER -->
+
+        <!-- Left panel : Navigation area -->
+        <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+        <aside id="left-panel">
+
+
+
+
+            <div class="dropdown user-info">
+                <div class="username" role="button" data-toggle="dropdown">
+                    <a  id="dLabel"  data-target="#" href="/page.html" >
+                        <i class="fa fa-user"> </i>  {{user.username}}  <i class="pull-right fa fa-angle-down"></i>
+                    </a>
+                </div>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <!--<li role="presentation"><a  ng-click="open()" role="menuitem" tabindex="-1" >View Profile</a></li>-->
+                    <!--<li role="presentation"><a role="menuitem" tabindex="-1" >Change Password</a></li>-->
+                    <!--<li role="presentation" class="divider"></li>-->
+                    <li role="presentation"><a role="menuitem" tabindex="-1"  href="/logout"><i class="fa fa-sign-out"> </i> Logout</a></li>
+                </ul>
+            </div>
+
+
+
+
+            <nav>
+                <div class="dd nestable" nestable >
+                    <ol class="dd-list" ng-controller="GroupController" >
+
+                        <li class="dd-item" data-id="{{group.id}}" ng-repeat="group in groups" >
+                            <div class="dd-handle" ng-click="getAgent(group)" ng-class="{active: isSelected(group)}" ng-init="getFirstVal(group)">
+                                {{group.name}}
+                                <!--<a class="pull-right double-icon" rel="tooltip" data-placement="left" data-original-title="Delete"><i class="fa fa-trash-o" ng-click="openDeleteGroupModal(group)"></i> </a>-->
+                                <!--<a class="pull-right" rel="tooltip" title="" data-placement="left" data-original-title="Edit"><i class="fa fa-edit" ng-click="openEditGroupModal(group)"></i></a>-->
+                            </div>
+                        </li>
+                        <div class="col-md-2 pull-right font-lg" ng-click="refreshGroups()"><i class="fa fa-refresh"></i></div>
+
+                    </ol>
+                </div>
+
+            </nav>
+
+        </aside>
+        <!-- END NAVIGATION -->
+
+        <!-- MAIN PANEL -->
+        <div id="main" role="main">
+
+
+            <!-- MAIN CONTENT -->
+            <div id="content">
+
+                <ng-view></ng-view>
+
+            </div>
+            <!-- END MAIN CONTENT -->
+        </div>
+        <!-- END MAIN PANEL -->
+
+
+
+        <!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script>
+                                            if (!window.jQuery) {
+                                                document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+                                            }
+        </script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script>
+                                            if (!window.jQuery.ui) {
+                                                document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+                                            }
+        </script>
+
+
+
+
+        <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+        -->
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+
+
+
+
+        <!--================================================== -->
+
+        <!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+        <script data-pace-options='{ "restartOnRequestAfter": true }' src="js/libs/plugin/pace/pace.min.js"></script>
+
+
+
+        <script src="js/app.js"></script>
+        <script src="js/filters.js"></script>
+
+        <!-- directives -->
+        <script src="js/directives/widget.js"></script>
+        <script src="js/directives/aaDatatable.js"></script>
+        <script src="js/directives/shura.nestable.js"></script>
+        <script src="js/directives/shura.tooltip.js"></script>
+
+
+        <!-- controllers -->
+        <script src="js/controllers/MainController.js"></script>
+        <script src="js/controllers/AgentController.js"></script>
+        <script src="js/controllers/GroupController.js"></script>
+
+        <!-- services -->
+        <script src="js/services/AgentService.js"></script>
+        <script src="js/services/GroupService.js"></script>
+        <script src="js/services/StatusService.js"></script>
+        <script src="js/services/NotificationService.js"></script>
+        <script src="js/services/AuthenticationService.js"></script>
+        <script src="js/services/AgentSkillService.js"></script>
+
+
+        <script src="bower_components/angular-timeago/src/timeAgo.js"></script>
+
+
+
+
+
+
+
+        <!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+        <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+
+        <!-- BOOTSTRAP JS -->
+        <script src="js/libs/bootstrap/bootstrap.min.js"></script>
+
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+
+        <!-- CUSTOM NOTIFICATION -->
+        <script src="js/libs/notification/SmartNotification.min.js"></script>
+
+        <!-- JARVIS WIDGETS -->
+        <script src="js/libs/smartwidgets/jarvis.widget.min.js"></script>
+
+        <!-- EASY PIE CHARTS -->
+        <script src="js/libs/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+        <!-- SPARKLINES -->
+        <script src="js/libs/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+        <!-- JQUERY VALIDATE -->
+        <script src="js/libs/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+        <!-- JQUERY MASKED INPUT -->
+        <script src="js/libs/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+        <!-- JQUERY SELECT2 INPUT -->
+        <script src="js/libs/plugin/select2/select2.min.js"></script>
+
+        <!-- JQUERY UI + Bootstrap Slider -->
+        <script src="js/libs/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+        <!-- browser msie issue fix -->
+        <script src="js/libs/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+        <!-- FastClick: For mobile devices -->
+        <script src="js/libs/plugin/fastclick/fastclick.js"></script>
+
+        <!-- Angular Strap -->
+        <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+        <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+
+        <!--[if IE 7]>
+
+        <h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+        <![endif]-->
+
+
+
+        <!-- PAGE RELATED PLUGIN(S) -->
+        <script src="js/libs/plugin/datatables/jquery.dataTables-cust.min.js"></script>
+        <script src="js/libs/plugin/datatables/ColReorder.min.js"></script>
+        <script src="js/libs/plugin/datatables/FixedColumns.min.js"></script>
+        <script src="js/libs/plugin/datatables/ColVis.min.js"></script>
+        <script src="js/libs/plugin/datatables/ZeroClipboard.js"></script>
+        <script src="js/libs/plugin/datatables/media/js/TableTools.min.js"></script>
+        <script src="js/libs/plugin/datatables/DT_bootstrap.js"></script>
+        <script src="js/libs/plugin/jquery-nestable/jquery.nestable.js"></script>
+
+
+
+        <!-- Demo purpose only -->
+        <script src="js/demo.js"></script>
+
+        <!-- MAIN APP JS FILE -->
+        <script src="js/app_2.js"></script>
+
+
+
+        <script type="text/javascript">
+                                            $(document).ready(function() {
+                                                pageSetUp();
+                                            });
+        </script>
+
+    </body>
+
+</html>

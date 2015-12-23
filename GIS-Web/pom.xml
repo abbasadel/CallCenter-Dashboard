@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.shuratech.gis</groupId>
+        <artifactId>GIS</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.shura.gis</groupId>
+    <artifactId>Web</artifactId>
+    <packaging>war</packaging>
+    <name>GIS-Web</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.shuratech.gis</groupId>
+            <artifactId>GIS-Fixture</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.shuratech.gis</groupId>
+            <artifactId>GIS-Genesys</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency> 
+            <groupId>org.apache.geronimo.specs</groupId> 
+            <artifactId>geronimo-servlet_3.0_spec</artifactId> 
+            <version>1.0</version> 
+        </dependency> 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.0.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>1.0.1.RELEASE</version>
+        </dependency>
+        <dependency> 
+            <groupId>org.springframework.boot</groupId> 
+            <artifactId>spring-boot-starter-security</artifactId> 
+            <version>1.0.1.RELEASE</version> 
+        </dependency> 
+
+    </dependencies>
+    <build>
+        <finalName>GIS-Web</finalName>
+        <plugins>
+
+
+            <!-- configure war plugin to skip webxml -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <!-- tomcat plugin -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+
+            <!-- jetty plugin -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.15.v20140411</version>
+            </plugin>
+
+
+
+
+        </plugins>
+    </build>
+</project>

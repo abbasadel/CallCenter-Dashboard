@@ -1,0 +1,29 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" ng-click="$hide()">&times;</button>-->
+                <h4 class="modal-title">User Login</h4>
+            </div>
+            <div class="modal-body" >
+                <form class="from  form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">User Name: </label>
+                    <div class="col-md-9">
+                        <input class="form-control" type="text" placeholder="please enter user name" ng-model="username" >
+                    </div>
+                </div>
+                <div class="form-group form-horizontal">
+                    <label class="col-md-3 control-label">Password: </label>
+                    <div class="col-md-9">
+                        <input class="form-control" type="password" placeholder="please enter password"  ng-model="password">
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" ng-click="doLogin(username,password)">Login</button>
+            </div>
+        </div>
+    </div>
+</div>

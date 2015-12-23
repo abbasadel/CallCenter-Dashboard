@@ -1,0 +1,100 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="modal-title">Create Agent</h4>
+            </div>
+            <div class="modal-body" > 
+                <form class="" role="form">
+                    <fieldset>
+                        <legend>
+                            Agent Information
+                        </legend>
+
+                        <div class="form-group">
+                            <label class="control-label">First Name:</label>
+                            <input type="text" class="form-control" ng-model="agent.firstName">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label">Last Name:</label>
+                            <input type="text" class="form-control" ng-model="agent.lastName">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="control-label">Employee ID:</label>
+                            <input type="text" class="form-control" ng-model="agent.employeeID">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label">Login ID:</label>
+                            <input type="text" class="form-control" ng-model="agent.loginID">
+                        </div>
+
+                    </fieldset>
+
+
+
+                    <fieldset>
+                        <legend>
+                            Agent Skill
+                        </legend>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select class="form-control" ng-model="skill" >
+                                   <option  ng-repeat="askill in skillList" value="{{askill.name}}">{{askill.name}}</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <select class="form-control" ng-model="level" >
+                                    <option value="Low">10</option>
+                                    <option value="Meidum">20</option>
+                                    <option value="Hight">30</option>
+                                </select> 
+                            </div>
+                            <div class="col-md-3">
+                                <label></label>
+                                <button type="button" class="btn btn-success"  ng-click="addToSkills(skill, level)">Add to Skills</button>
+                            </div>
+                        </div>
+                        <div class="added-skill">
+                            <div  ng-repeat="skill in skills">
+                                <div class="col-md-6">
+                                    <p>Skill: {{skill.skill}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Level: {{skill.level}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+
+
+                    <fieldset>
+                        <legend>
+                            Agent Groups
+                        </legend>
+                        <div class="form-group">
+                            <select ng-model="groups"  multiple="true" class="form-control">
+                                <option  ng-repeat="group in groupList" value="{{group.id}}">{{group.name}}</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="saveAgent(agent, groups, skills)">Save</button>
+                <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button>
+
+            </div>
+        </div>
+    </div>
+</div>

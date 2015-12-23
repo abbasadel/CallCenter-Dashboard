@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us"
+      xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <meta charset="utf-8" />
+        <title> Cusomer GIS Login </title>
+        <!-- Basic Styles -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css" />
+
+        <!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.css"/>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/demo.css" />
+
+        <!-- page related CSS -->
+        <link rel="stylesheet" type="text/css" media="screen" href="css/lockscreen.css" />
+
+        <!-- FAVICONS -->
+        <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon"/>
+
+        <!-- GOOGLE FONT -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700" />
+
+
+    </head>
+    <body>
+
+        <div id="main" role="main">
+
+            <!-- MAIN CONTENT -->
+
+            <form class="lockscreen well form-horizontal animated flipInY" th:action="@{/login}" method="post">
+                <div class="logo">
+                    <h1 class="semi-bold"><img src="img/customer-logo.png" alt="" /> Customer GIS</h1>
+                </div>
+
+                <fieldset>
+
+                    <legend>Pleas login to continue</legend>
+
+                    <div th:if="${param.error}">
+                        Invalid username and password.
+                    </div>
+                    <div th:if="${param.logout}">
+                        You have been logged out.
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="Your username" type="text" name="username" />
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input class="form-control" placeholder="Your Password" type="password" name="password" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success pull-right">Login</button>
+                        </div>
+                    </div>
+
+
+
+
+                </fieldset>
+            </form>
+        </div>
+
+
+
+
+
+
+        <script src="js/libs/jquery-2.0.2.min.js"></script>
+        <script src="js/libs/jquery-ui-1.10.3.min.js"></script>
+        <!-- JS TOUCH : include this plugin for mobile drag / drop touch events
+        <script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> -->
+
+        <!-- BOOTSTRAP JS -->
+        <script src="js/libs/bootstrap/bootstrap.min.js"></script>
+
+        <script src="js/libs/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+        <!-- JQUERY MASKED INPUT -->
+        <script src="js/libs/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+
+
+    </body>
+</html>

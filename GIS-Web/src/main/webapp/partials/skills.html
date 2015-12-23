@@ -1,0 +1,47 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="modal-title">Skills</h4>
+            </div>
+            <div class="inline-group">
+                <div class="form-group">
+                    <label class="control-label col-md-1">Skills: </label>
+                    <div class="col-md-4">
+                    <select class="form-control" ng-model="askill">
+                        <option ng-repeat="skill in skillsList" value="{{skill.name}}">{{skill.name}}</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-1">Level: </label>
+                    <div class="col-md-4">
+                    <select class="form-control" ng-model="level">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                    </div>
+                </div>
+                <div>
+                <button type="button" class="btn btn-info" ng-click="addSkill(askill,level)">add skill</button>
+                </div>
+                <div class="padding-10">
+                    <div ng-repeat="userSkill in userSkills">
+                        <div class="col-md-6">
+                        <p>Skill: {{userSkill.name}}</p>
+                        </div>
+                        <div class="col-md-6">
+                        <p>Level: {{userSkill.level}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="matchAgentSkills(selectedUsers,userSkills)">Save</button>
+                <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

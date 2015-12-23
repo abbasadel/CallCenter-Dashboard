@@ -1,0 +1,155 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+
+
+#logo img {
+    width: 30px;
+}
+
+#logo{
+    color: #fff;
+    font-size: 19px;
+}
+
+.smart-style-2 #header, .smart-style-2 .inbox-footer, .smart-style-2 .superbox-show {
+    background-color: #E60000;
+}
+
+.smart-style-2 .header-search>input[type="text"] {
+    background: #F7F7F7;
+    border: 1px solid #F7F7F7;
+    color: grey;
+    border-radius: 4px;
+}
+
+.smart-style-2 .login-info a span {
+    line-height: 35px;
+    font-size: 16px !important;
+    width: 150px;
+    max-width: 150px;
+}
+
+.smart-style-2 .header-search>button, 
+.smart-style-2 .header-dropdown-list a.dropdown-toggle,
+.smart-style-2 #logo-group span#activity
+{
+    color: #E9E9E9;
+}
+
+
+.dd-handle {
+    border: none ;
+    background: #ffffff;
+    padding: 7px 7px;
+    border-left: 5px solid #fbfbfb;
+    cursor: move;
+}
+
+
+
+.dd-handle:hover + .dd-list .dd-handle,
+.dd-handle:hover {
+    background: #fbfbfb !important;
+    border: none;
+    color: #333 !important;
+}
+
+.dd-handle.current{
+    background-color: #fbfbfb;
+}
+
+.dd-dragel .dd-handle, .dd-handle:hover {
+    border-left: 5px solid #f0f0f0;
+}
+
+.dd-handle:hover i{
+    display: inline-block;
+    color: #999;
+}
+
+.dd-handle i{
+    display: none;
+    cursor: pointer;
+}
+
+#sparks li h5 {
+    color: white;
+}
+
+.user-info .username{
+    padding: 5px 10px 7px;
+    background: #FFF;
+    border-radius: 4px;
+    padding: 14px 10px;
+    font-size: 16px !important;
+}
+
+.user-info .username a{
+    max-width: 150px;
+} 
+
+.user-info .username i{
+    line-height: 26px;
+}
+
+.dataTables_filter .input-group{
+    width: 340px !important;
+}
+/* Issue #7 Moaaz Taha*/
+#admin-header{
+    padding-right: 20px;
+}
+.modal-header{
+    background-color:#E60000;
+    color: white;
+}
+.modal-header .close {
+    color: white;
+    opacity: .8;
+}
+
+/* angular strap modal */
+.modal-backdrop{
+    opacity: .6;
+}
+
+#header>:first-child, aside {
+    width: 300px;
+}
+
+#main {
+    margin-left: 300px;
+}
+.double-icon{
+    padding-left: 5px;
+}
+.confirm-modal-content{
+    font-size: 15px;
+}
+
+nav .dd-handle.active {
+    background-color: #DDDADA !important;
+}
+
+.added-skill{
+    margin: 11px;
+}
+
+/* end of Issue #7 Moaaz Taha*/
